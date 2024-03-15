@@ -1,0 +1,15 @@
+@import "variables";
+
+.year-input-container {
+  width: 60px;
+
+  &__input {
+    width: 100%;
+    padding: 10px 0px;
+  }
+
+  &__ddown {
+    width: 60px;
+  }
+}
+

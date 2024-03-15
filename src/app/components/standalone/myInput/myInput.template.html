@@ -1,0 +1,13 @@
+<div class="input-container" [formGroup]="myInputForm">
+  <input
+    #myInput
+    class="input-container__input acid-input nostyle-input"
+    placeholder="{{placeholder}}"
+    type="text"
+    formControlName="myInput"
+  />
+
+  <div #errorEle [@errorTrigger]="errorState" class="input-container__error">
+    <span>{{errorMsg}}</span>
+  </div>
+</div>

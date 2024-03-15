@@ -1,0 +1,15 @@
+.acid-input {
+  font-family: $font-bold;
+  color: $acid;
+  border: $acid-border-thin;
+  text-transform: uppercase;
+  background-color: $black;
+  text-align: center;
+  border-radius: 15px;
+  font-size: 18px;
+
+  &::placeholder {
+    font-family: $font-thin;
+    font-size: 14px;
+  }
+}

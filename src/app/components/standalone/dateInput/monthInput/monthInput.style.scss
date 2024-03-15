@@ -1,0 +1,15 @@
+@import "variables";
+
+.month-input-container {
+  width: 125px;
+
+  &__input {
+    width: 100%;
+    padding: 10px 0px;
+  }
+
+  &__ddown {
+    width: 125px;
+  }
+}
+

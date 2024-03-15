@@ -1,0 +1,32 @@
+@import "variables";
+
+.input-container {
+  position: relative;
+  width: 260px;
+  max-height: 100px;
+
+  &__input {
+    position: absolute;
+    width: 98%;
+    padding: 10px 0px;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    font-family: $font-bold;
+    text-align: center;
+    font-size: 15px;
+    color: rgb(85, 160, 195);
+    top: 0px;
+    width: 100%;
+    background-color: $acid;
+    z-index: 9;
+    border-radius: 15px;
+    text-transform: uppercase;
+  }
+}

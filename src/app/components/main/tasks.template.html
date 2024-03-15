@@ -1,0 +1,28 @@
+<section class="tasks-container">
+  <article class="tasks-container__content">
+    <header class="tasks-container__header">
+      <ul class="tasks-header-list nostyle-list">
+        <li>
+          <button
+            #thisBtn
+            class="my-btn my-btn--tasks nostyle-btn"
+            (click)="asideState == 'show' ? asideState = 'init' : asideState = 'show'; activateBtn(thisBtn)"
+          >
+            create
+          </button>
+        </li>
+      </ul>
+    </header>
+
+    <main class="tasks-container__main"></main>
+  </article>
+
+  <aside [@asideTrigger]="'show'" class="tasks-container__aside">
+    <my-input #asideInput [placeholder]="'header'" [type]="'header'"></my-input>
+    <my-input #asideInput [placeholder]="'task name'" [type]="'name'"></my-input>
+    <date-input-component></date-input-component>
+    <!-- <my-input [placeholder]="'task name'"></my-input> -->
+
+    <button class="my-btn my-btn--tasks nostyle-btn" (click)="save()">save</button>
+  </aside>
+</section>
