@@ -1,27 +1,24 @@
 <div class="day-input-container">
-  <form [formGroup]="myInputForm">
-    <input
-      #dayInput
-      class="day-input-container__input acid-input nostyle-input"
-      placeholder="day"
-      type="text"
-      (click)="expand()"
-      formControlName="myInput"
-      readonly
-    />
-  </form>
+  <input
+    #dayInput
+    class="day-input-container__input acid-input nostyle-input"
+    placeholder="day"
+    type="text"
+    (click)="expand()"
+    readonly
+  />
 
-  <div
-    class="day-input-container__ddown acid-ddown"
-    [@animeTrigger]="animeState"
-  >
-    <ul class="day-input-container__items acid-ddown__items nostyle-list">
+    <ul
+      class="day-input-container__ddown acid-ddown nostyle-list"
+      [@animeTrigger]="animeState"
+    >
+      @for (item of items; track item) {
       <li
         class="day-input-container__ddown-item acid-ddown__item"
-        *ngFor="let item of items"
+        (click)="setDay(item)"
       >
         <span>{{item}}</span>
       </li>
+      }
     </ul>
-  </div>
 </div>

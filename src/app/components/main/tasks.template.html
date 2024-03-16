@@ -18,11 +18,40 @@
   </article>
 
   <aside [@asideTrigger]="'show'" class="tasks-container__aside">
-    <my-input #asideInput [placeholder]="'header'" [type]="'header'"></my-input>
-    <my-input #asideInput [placeholder]="'task name'" [type]="'name'"></my-input>
-    <date-input-component></date-input-component>
-    <!-- <my-input [placeholder]="'task name'"></my-input> -->
+    <ul class="tasks-container__aside-items nostyle-list">
+      <li class="tasks-container__aside-item">
+        <my-input
+          #headerInput
+          [placeholder]="'header'"
+          [type]="'header'"
+        ></my-input>
+      </li>
+      <li class="tasks-container__aside-item">
+        <my-input
+          #nameInput
+          [placeholder]="'task name'"
+          [type]="'name'"
+        ></my-input>
+      </li>
+      <li class="tasks-container__aside-item tasks-container__aside-date">
+        <date-input #dateInput></date-input>
+      </li>
+      <li class="tasks-container__aside-item">
+        <ddown-input [type]="'priority'" [placeholder]="'priority'"></ddown-input>
+      </li>
+      <li class="tasks-container__aside-item">
+        <select-input #selectInput></select-input>
+      </li>
+      <li class="tasks-container__aside-item">
+        <ddown-input [type]="'status'" [placeholder]="'status'"></ddown-input>
+      </li>
+    </ul>
 
-    <button class="my-btn my-btn--tasks nostyle-btn" (click)="save()">save</button>
+    <button
+      class="tasks-container__aside-btn my-btn my-btn--tasks nostyle-btn"
+      (click)="save()"
+    >
+      save
+    </button>
   </aside>
 </section>

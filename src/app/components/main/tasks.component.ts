@@ -5,10 +5,16 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { MyInputComponent } from '../standalone/myInput/myInput.component';
-
-
+import { DateInputComponent } from '../standalone/dateInput/dateInput.component';
+import { SelectInputComponent } from '../standalone/selectInput/selectInput.component';
 
 @Component({
   selector: 'tasks',
@@ -32,15 +38,26 @@ import { MyInputComponent } from '../standalone/myInput/myInput.component';
 export class TasksComponent {
   asideState: string = 'init';
 
-  @ViewChildren("asideInput") inputs!: QueryList<MyInputComponent>;
+  @ViewChild('headerInput')
+  headerInp: MyInputComponent;
+  @ViewChild('nameInput')
+  nameInp: MyInputComponent;
+  @ViewChild('dateInput')
+  dateInp: DateInputComponent;
+  @ViewChild('selectInput')
+  selectInp: SelectInputComponent;
 
   activateBtn(ele: HTMLButtonElement) {
     ele.classList.toggle('my-btn--active');
   }
 
-  save(){
-    this.inputs.forEach((input) => {
-      console.log(input.getValue());
-    })
+  save() {
+    // this.dateInp.getStamp();
+    // this.inputs.forEach((input) => {
+    //   console.log(input.getValue());
+    // });
+    // this.headerInp.getValue();
+    // this.nameInp.getValue();
+    this.selectInp.getValue();
   }
 }

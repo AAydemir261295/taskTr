@@ -8,15 +8,12 @@
   z-index: 11;
   overflow-y: auto;
   scrollbar-width: thin;
-//   transition: 0.2s linear;
-
-  &__items {
-    font-family: $font-bold;
-    font-size: 20px;
-    color: $acid;
-    text-transform: uppercase;
-    text-align: center;
-  }
+  font-family: $font-bold;
+  font-size: 20px;
+  color: $acid;
+  text-transform: uppercase;
+  text-align: center;
+  transition: 0.15s linear;
 
   &__item {
     transition: 0.15s linear;

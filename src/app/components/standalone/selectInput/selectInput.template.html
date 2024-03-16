@@ -1,0 +1,61 @@
+<div class="select-input-container">
+  <form [formGroup]="myInputForm">
+    <input
+      #selectInput
+      class="select-input-container__input acid-input nostyle-input"
+      placeholder="responsible"
+      type="text"
+      formControlName="myInput"
+      (click)="expand(); errorState = 'init'"
+    />
+  </form>
+  <!--  -->
+  <!--  -->
+  <div
+    #errorEle
+    [@errorTrigger]="errorState"
+    class="select-input-container__error acid-input-error"
+  >
+    <span>{{errorMsg}}</span>
+  </div>
+
+  <!--  -->
+  <!--  -->
+
+  <div
+    class="select-input-container__ddown acid-ddown"
+    [@animeTrigger]="animeState"
+  >
+    <ul class="select-input-container__items acid-ddown__items nostyle-list">
+      @for (item of items; track item) {
+      <li
+        class="select-input-container__ddown-item acid-ddown__item"
+        (click)="select(item)"
+      >
+        <span>{{item}}</span>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <!--  -->
+  <!--  -->
+
+  @if (selected.length > 0) {
+  <ul class="select-input-container__selected selected-items nostyle-list">
+    @for (item of selected; track item) {
+    <li class="selected-items__item">
+      <span>{{item}}</span>
+      <button
+        class="selected-items__delete-btn nostyle-btn"
+        (click)="deleteItem(item)"
+      >
+        X
+      </button>
+    </li>
+    }
+  </ul>
+  }
+  <!--  -->
+  <!--  -->
+</div>

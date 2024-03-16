@@ -1,28 +1,21 @@
 <div class="year-input-container">
-  <form [formGroup]="myInputForm">
-    <input
-      #yearInput
-      class="year-input-container__input acid-input nostyle-input"
-      placeholder="year"
-      type="text"
-      (click)="expand()"
-      formControlName="myInput"
-      readonly
-    />
-  </form>
+  <input
+    #yearInput
+    class="year-input-container__input acid-input nostyle-input"
+    placeholder="year"
+    type="text"
+    (click)="expand()"
+    readonly
+  />
 
-  <div
-    class="year-input-container__ddown acid-ddown"
+  <ul
+    class="year-input-container__ddown acid-ddown nostyle-list"
     [@animeTrigger]="animeState"
   >
-    <ul class="year-input-container__items acid-ddown__items nostyle-list">
-      <li
-        class="year-input-container__ddown-item acid-ddown__item"
-        (click)="setYear(item)"
-        *ngFor="let item of items"
-      >
-        <span>{{item}}</span>
-      </li>
-    </ul>
-  </div>
+    @for (item of items; track item; let i = $index) {
+    <li class="acid-ddown__item" (click)="setYear(item)">
+      <span>{{item}}</span>
+    </li>
+    }
+  </ul>
 </div>

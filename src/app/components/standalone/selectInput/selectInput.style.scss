@@ -1,0 +1,37 @@
+@import "variables";
+
+.select-input-container {
+  position: relative;
+  width: 255px;
+  // margin-top: 250px;
+
+  &__input {
+    position: relative;
+    width: 251px;
+    padding: 10px 0px;
+    overflow: hidden;
+    z-index: 10;
+  }
+
+  &__selected {
+    width: 231px;
+    max-height: 120px;
+    margin-top: 10px;
+    overflow-x: auto;
+  }
+
+  &__error {
+    position: absolute;
+    display: flex;
+    top: 0px;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 255px;
+    z-index: 9;
+  }
+
+  &__ddown {
+    // margin-top: 0px;
+    width: 251px;
+  }
+}

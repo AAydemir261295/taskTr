@@ -10,7 +10,7 @@ import {
 import { DateInputCommunication } from '../dateInput.communication';
 import { FormControl, FormGroup } from '@angular/forms';
 import { state, transition, trigger } from '@angular/animations';
-import { ddownAnimation } from '../ddown.animation';
+import { ddownAnimation } from '../../animations/ddown.animation';
 import { EmitEvent } from 'src/app/inc/emitEvent';
 
 @Component({
@@ -21,10 +21,6 @@ import { EmitEvent } from 'src/app/inc/emitEvent';
 })
 export class MonthInputComponent implements AfterViewInit {
   constructor(private communication: DateInputCommunication) {}
-
-  myInputForm: FormGroup = new FormGroup({
-    myInput: new FormControl(''),
-  });
 
   @ViewChild('monthInput')
   monthInput: ElementRef<HTMLInputElement>;
@@ -46,25 +42,29 @@ export class MonthInputComponent implements AfterViewInit {
 
   animeState: string = 'init';
 
+  getValue() {
+    return this.items.indexOf(this.monthInput.nativeElement.value);
+  }
+
   expand() {
-    this.animeState = 'start';
+    // this.animeState = 'start';
     this.animeState = 'end';
   }
 
-  setMonth(month){
-
+  setMonth(month, index) {
     this.monthInput.nativeElement.value = month;
-    this.setDays();
+    // this.setDays();
+    this.communication.emit(new EmitEvent('set month', { month: index }));
   }
 
-  setDays() {
-    var now = new Date(Date.now());
-    var maxDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    this.communication.emit(new EmitEvent('set days', { maxDay: maxDay }));
-  }
+  // setDays() {
+  //   var now = new Date(Date.now());
+  //   var maxDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+  //   this.communication.emit(new EmitEvent('set days', { maxDay: maxDay }));
+  // }
 
   hide() {
-    this.animeState = 'start';
+    // this.animeState = 'start';
     this.animeState = 'init';
   }
 
@@ -78,8 +78,12 @@ export class MonthInputComponent implements AfterViewInit {
   public documentClick(event: Event): void {
     var target = event.target;
     if (target != this.monthInput.nativeElement) {
-      console.log('here?');
       this.hide();
     }
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onKeydownHandler(event: KeyboardEvent) {
+    this.hide();
   }
 }

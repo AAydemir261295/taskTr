@@ -15,7 +15,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ddownAnimation } from '../ddown.animation';
+import { ddownAnimation } from '../../animations/ddown.animation';
 import { EmitEvent } from 'src/app/inc/emitEvent';
 
 @Component({
@@ -27,10 +27,6 @@ import { EmitEvent } from 'src/app/inc/emitEvent';
 export class YearInputComponent implements AfterViewInit {
   constructor(private communication: DateInputCommunication) {}
 
-  myInputForm: FormGroup = new FormGroup({
-    myInput: new FormControl(''),
-  });
-
   @ViewChild('yearInput')
   yearInpt: ElementRef<HTMLInputElement>;
 
@@ -38,8 +34,12 @@ export class YearInputComponent implements AfterViewInit {
 
   items: any[] = [2022, 2023, 2024, 2025];
 
+  getValue() {
+    return this.yearInpt.nativeElement.value;
+  }
+
   expand() {
-    this.animeState = 'start';
+    // this.animeState = 'start';
     this.animeState = 'end';
   }
 
@@ -49,7 +49,7 @@ export class YearInputComponent implements AfterViewInit {
   }
 
   hide() {
-    this.animeState = 'start';
+    // this.animeState = 'start';
     this.animeState = 'init';
   }
 
@@ -63,8 +63,13 @@ export class YearInputComponent implements AfterViewInit {
   public documentClick(event: Event): void {
     var target = event.target;
     if (target != this.yearInpt.nativeElement) {
-      console.log('here?');
       this.hide();
     }
+  }
+
+  
+  @HostListener('document:keydown.escape', ['$event'])
+  onKeydownHandler(event: KeyboardEvent) {
+    this.hide();
   }
 }

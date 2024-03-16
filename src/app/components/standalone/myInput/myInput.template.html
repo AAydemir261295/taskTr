@@ -4,10 +4,15 @@
     class="input-container__input acid-input nostyle-input"
     placeholder="{{placeholder}}"
     type="text"
+    (click)="errorState = 'init'"
     formControlName="myInput"
   />
 
-  <div #errorEle [@errorTrigger]="errorState" class="input-container__error">
+  <div
+    #errorEle
+    [@errorTrigger]="errorState"
+    class="input-container__error acid-input-error"
+  >
     <span>{{errorMsg}}</span>
   </div>
 </div>

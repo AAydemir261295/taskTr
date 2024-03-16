@@ -1,28 +1,21 @@
 <div class="month-input-container">
-  <form [formGroup]="myInputForm">
-    <input
-      #monthInput
-      class="month-input-container__input acid-input nostyle-input"
-      placeholder="month"
-      type="text"
-      (click)="expand(); setDays()"
-      formControlName="myInput"
-      readonly
-    />
-  </form>
+  <input
+    #monthInput
+    class="month-input-container__input acid-input nostyle-input"
+    placeholder="month"
+    type="text"
+    (click)="expand();"
+    readonly
+  />
 
-  <div
-    class="month-input-container__ddown acid-ddown"
+  <ul
+    class="month-input-container__ddown acid-ddown nostyle-list"
     [@animeTrigger]="animeState"
   >
-    <ul class="month-input-container__items acid-ddown__items nostyle-list">
-      <li
-        class="month-input-container__ddown-item acid-ddown__item"
-        (click)="setMonth(item)"
-        *ngFor="let item of items; index as i"
-      >
-        <span>{{item}}</span>
-      </li>
-    </ul>
-  </div>
+    @for (item of items; track item; let i = $index) {
+    <li class="acid-ddown__item" (click)="setMonth(item, i)">
+      <span>{{item}}</span>
+    </li>
+    }
+  </ul>
 </div>

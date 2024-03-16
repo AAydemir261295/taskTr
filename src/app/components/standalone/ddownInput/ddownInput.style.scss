@@ -1,0 +1,15 @@
+@import "variables";
+
+.priority-input-container {
+  max-width: 255px;
+  // min-height: 80px;
+
+  &__input {
+    width: 251px;
+    padding: 10px 0px;
+  }
+
+  &__ddown {
+    width: 251px;
+  }
+}

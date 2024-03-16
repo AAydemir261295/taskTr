@@ -5,8 +5,8 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,6 +14,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { inputError } from '../animations/inputError.animation';
 
 const validators = {
   header: [{ minMax: { min: 5, max: 15 } }, { pattern: '[a-zA-Z]+' }],
@@ -37,19 +38,12 @@ const errorMsgs = {
 
 @Component({
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [ReactiveFormsModule],
   selector: 'my-input',
   templateUrl: './myInput.template.html',
   styleUrls: ['./myInput.style.scss'],
   animations: [
-    trigger('errorTrigger', [
-      state('init', style({ height: '40px' })),
-      state('show', style({ height: '75px' })),
-      transition(
-        'init <=> show',
-        animate('0.2s cubic-bezier(.36,1.12,.31,.95)')
-      ),
-    ]),
+    inputError
   ],
 })
 export class MyInputComponent implements OnInit {
@@ -107,6 +101,7 @@ export class MyInputComponent implements OnInit {
   getPatternValidator(pattern) {
     return [Validators.pattern(pattern)];
   }
+
 
   ngOnInit(): void {
     switch (this.type) {

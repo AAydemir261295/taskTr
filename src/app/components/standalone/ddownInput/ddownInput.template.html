@@ -1,0 +1,21 @@
+<div class="priority-input-container">
+  <input
+    #priorityInput
+    class="priority-input-container__input acid-input nostyle-input"
+    placeholder="{{placeholder}}"
+    type="text"
+    (click)="expand()"
+    readonly
+  />
+
+  <ul
+    class="priority-input-container__ddown acid-ddown nostyle-list"
+    [@animeTrigger]="animeState"
+  >
+    @for (item of items; track item) {
+    <li class="acid-ddown__item" (click)="setValue(item)">
+      <span>{{item}}</span>
+    </li>
+    }
+  </ul>
+</div>
